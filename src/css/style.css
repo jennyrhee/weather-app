@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Poppins&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 a {
@@ -13,10 +16,64 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  align-items: center;
+  background-color: #82c0cc;
+}
+
+header {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .content {
+  margin: 1em;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-container {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #ede7e3;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.location {
+  font-size: 1.5rem;
+}
+
+.description {
+  font-size: 1.2rem;
+}
+
+.temp-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 60px;
+}
+
+#main-temp {
+  font-size: 1.2rem;
+}
+
+.etc-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  align-items: center;
+}
+
+.etc {
+  font-size: 0.9rem;
 }
 
 .temp::after {
@@ -24,5 +81,6 @@ body {
 }
 
 footer {
-  align-self: center;
+  text-transform: uppercase;
+  font-size: 0.8rem;
 }
