@@ -8,13 +8,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
 </head>
 <body>
-  <header></header>
+  <header>
+    <a href="/weather-app" class="logo">weather</a>
+  </header>
 
   <div class="content">
     <form action="" id="form">
       <input type="text" name="location" id="location" placeholder="Enter Location">
       <button type="submit">Search</button>
     </form>
+
+    <div class="weather-container">
+      <div class="location"></div>
+      <div class="description"></div>
+      <div class="temp-wrapper">
+        <img class="icon"></div>
+        <div id="main-temp" class="temp"></div>
+      </div>
+      <div class="etc-wrapper">
+        <div class="etc temp"></div>
+        <div class="etc"></div>
+      </div>
+    </div>
   </div>
 
   <footer>
