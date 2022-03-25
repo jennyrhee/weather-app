@@ -55,6 +55,6 @@ function initializeForm(formId) {
 }
 
 (() => {
-  handleResponse('Lafayette');
+  handleResponse('Florence');
   initializeForm('form');
 })();
