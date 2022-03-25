@@ -7,7 +7,7 @@ function fillDiv(query, text) {
 }
 
 function showData(data) {
-  if ('city' in data) {
+  if ('city' in data && 'state' in data) {
     fillDiv('.location', `${data.city}, ${data.state}`);
   } else {
     fillDiv('.location', `${data.name}`);
