@@ -15,7 +15,7 @@ function showData(data) {
   fillDiv('.description', data.main);
 
   const icon = document.querySelector('.icon');
-  icon.src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
+  icon.src = `https://openweathermap.org/img/wn/${data.icon}@2x.png`;
   fillDiv('#main-temp', Math.round(data.temp));
 
   const etcs = document.querySelectorAll('.etc');
