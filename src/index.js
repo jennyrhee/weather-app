@@ -8,7 +8,6 @@ function fillDiv(query, text) {
 
 function showData(data) {
   if ('city' in data && data.state !== undefined) {
-    console.log(data)
     fillDiv('.location', `${data.city}, ${data.state}`);
   } else {
     fillDiv('.location', `${data.name}`);
