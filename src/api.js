@@ -1,5 +1,9 @@
 const API_KEY = process.env.API_KEY;
 
+function isZip(location) {
+  return /^\d{5}(-\d{4})?$/.test(location);
+}
+
 async function getLocation(lat, lon, limit = 1) {
   try {
     const response = await fetch(
@@ -15,9 +19,14 @@ async function getLocation(lat, lon, limit = 1) {
 
 async function getCurrentWeather(location) {
   try {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=imperial`,
-    );
+    const response = isZip(location) 
+      ? await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?zip=${location}&appid=${API_KEY}&units=imperial`,
+      )
+      : await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=imperial`,
+      );
+
     if (response.status === 200) {
       const weatherData = await response.json();
       return {
