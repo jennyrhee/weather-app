@@ -7,7 +7,7 @@ function isZip(location) {
 async function getLocation(lat, lon, limit = 1) {
   try {
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=${limit}&appid=${API_KEY}`,
+      `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=${limit}&appid=${API_KEY}`,
     );
     const locationData = await response.json();
 
