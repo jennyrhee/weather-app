@@ -18,14 +18,15 @@ async function getCurrentWeather(location) {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=imperial`,
     );
-    const weatherData = await response.json();
-    
+    if (response.status === 200) {
+      const weatherData = await response.json();
+      return {
+        ...weatherData.coord,
+        ...weatherData.weather[0],
+        ...weatherData.main
+      };
+    } else return response;
 
-    return {
-      ...weatherData.coord,
-      ...weatherData.weather[0],
-      ...weatherData.main
-    };
   } catch (err) {
     console.log(err);
   }
@@ -33,12 +34,14 @@ async function getCurrentWeather(location) {
 
 async function getData(location) {
   const currentData = await getCurrentWeather(location);
-  const locationData = await getLocation(currentData.lat, currentData.lon);
-  
-  return {
-    ...locationData,
-    ...currentData
-  };
+  if (currentData.status === 404) return currentData;
+  else {
+    const locationData = await getLocation(currentData.lat, currentData.lon);
+    return {
+      ...locationData,
+      ...currentData
+    };
+  }
 }
 
 export { getData }

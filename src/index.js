@@ -19,19 +19,38 @@ function showData(data) {
   etcs[1].textContent = `Humidity: ${data.humidity}%`;
 }
 
+function showError(response) {
+  alert(`${response.statusText}. Try another location.`);
+}
+
+function handleResponse(entry) {
+  getData(entry).then(data => {
+    if (data.status === 404) showError(data);
+    else showData(data);
+  });
+}
+
+function formatEntry(entry) {
+  let formatted = entry.replace(/\s*,\s*/g, ',');
+  if ((formatted.match(',') || []).length === 1) {
+    // Assumes if a comma, then it's a city and state in the US
+    // Might be a bad assumption
+    formatted = `${formatted}, USA`;
+  }
+  return formatted;
+}
+
 function initializeForm(formId) {
   const form = document.getElementById(formId);
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    getData(e.target[0].value).then(data => showData(data));
+    const entry = formatEntry(e.target[0].value)
+    handleResponse(entry);
   })
 }
 
 (() => {
-  getData('Lafayette').then(data => {
-    console.log(data);
-    showData(data);
-  });
+  handleResponse('Lafayette');
   initializeForm('form');
 })();
