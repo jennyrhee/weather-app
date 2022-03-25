@@ -21,6 +21,7 @@ async function getCurrentWeather(location) {
     if (response.status === 200) {
       const weatherData = await response.json();
       return {
+        name: weatherData.name,
         ...weatherData.coord,
         ...weatherData.weather[0],
         ...weatherData.main

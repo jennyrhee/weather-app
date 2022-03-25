@@ -7,7 +7,11 @@ function fillDiv(query, text) {
 }
 
 function showData(data) {
-  fillDiv('.location', `${data.city}, ${data.state}`)
+  if (data.hasOwnProperty('city')) {
+    fillDiv('.location', `${data.city}, ${data.state}`);
+  } else {
+    fillDiv('.location', `${data.name}`);
+  }
   fillDiv('.description', data.main);
 
   const icon = document.querySelector('.icon');
